@@ -22,23 +22,23 @@ scrape_configs:
   - job_name: 'k8s-nodes'
     static_configs:
       - targets:
-        - '13.203.226.128:9100'   # K8s master
-        - '13.233.167.191:9100'   # K8s node1
-        - '13.203.221.93:9100'    # K8s node2
+        - '13.204.53.99:9100'   # K8s master
+        - '15.207.107.89:9100'   # K8s node1
+        - '43.204.216.161:9100'    # K8s node2
 
   # Monitor Jenkins master Prometheus endpoint
   - job_name: 'jenkins-master'
     metrics_path: /prometheus
     static_configs:
-      - targets: ['15.207.106.6:8080']
+      - targets: ['3.110.161.245:8080']  # jenkins server IP
 
   # Monitor Jenkins master system metrics
   - job_name: 'jenkins-master-node'
     static_configs:
-      - targets: ['15.207.106.6:9100']
+      - targets: ['3.110.161.245:9100'] # jenkins server IP
 
   # Monitor Jenkins Agent system metrics
   - job_name: 'jenkins-agent'
     static_configs:
       - targets:
-        - '13.203.226.128:9100'   # Jenkins Agent1
+        - '13.204.53.99:9100'   # Jenkins Agent1
